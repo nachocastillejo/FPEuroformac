@@ -45,7 +45,7 @@ export default async (request, context) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        
+
         const createStream = async (id) => {
             return client.responses.create({
                 model: "gpt-5-mini",
@@ -77,7 +77,7 @@ export default async (request, context) => {
         }
 
         // Use a transform stream to format the data as Server-Sent Events (SSE)
-        const readable = Readable.from((async function*() {
+        const readable = Readable.from((async function* () {
             for await (const event of stream) {
                 // The event structure from the openai-node library is already JSON-like.
                 // We just need to wrap it in the "data: ...\n\n" format for SSE.

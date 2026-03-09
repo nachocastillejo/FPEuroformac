@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // This is a post-processing step to merge adjacent lists.
             .replace(/<\/ul><ul>/g, '');
     };
-    
+
     const appendMessage = (sender, text, isHtml = false) => {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', `${sender}-message`);
-        
+
         const contentDiv = document.createElement('div');
         if (isHtml) {
             contentDiv.innerHTML = text;
@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // For user messages, we still wrap in a <p> for consistent styling
             contentDiv.innerHTML = `<p>${text}</p>`;
         }
-        
+
         messageElement.appendChild(contentDiv);
         chatWindow.appendChild(messageElement);
         chatWindow.scrollTop = chatWindow.scrollHeight;
         return messageElement;
     };
-    
+
     messageForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const message = messageInput.value.trim();
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let botMessageElement = appendMessage('bot', '<span class="typing-indicator"></span>', true);
         const botContentDiv = botMessageElement.querySelector('div');
-        
+
         let fullResponse = '';
 
         try {
