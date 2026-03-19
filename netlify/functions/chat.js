@@ -48,7 +48,7 @@ export default async (request, context) => {
 
         const createStream = async (id) => {
             return client.responses.create({
-                model: "gpt-5-mini",
+                model: "gpt-5.4-nano",
                 instructions: INSTRUCTIONS,
                 input: [{ role: "user", content: message }],
                 reasoning: { effort: "low" },
